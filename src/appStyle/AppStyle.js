@@ -1,23 +1,22 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
+import bridge001 from "../images/bridge001.jpg";
 
 export default makeStyles(() => ({
   appBar: {
-    borderRadius: 15,
-    margin: '30px 0',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    //borderRadius: 15,
+    margin: "30px 0",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   heading: {
     //color: 'rgba(0,183,255, 1)',
-    color: '#00897b'
-
+    color: "#00897b",
   },
   image: {
-    marginLeft: '15px',
-    borderRadius : "20px",
-    padding : "5px"
-
+    marginLeft: "15px",
+    borderRadius: "20px",
+    padding: "5px",
   },
 }));

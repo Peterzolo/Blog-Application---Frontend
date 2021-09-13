@@ -1,0 +1,7 @@
+.bodyStyle {
+  /*background-color: blue;*/
+  background-image: url("../images/picture003.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+}
