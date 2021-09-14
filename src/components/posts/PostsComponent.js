@@ -2,10 +2,11 @@ import React from "react";
 import SinglePost from "./singlePost/SinglePost";
 import { Grid, CircularProgress } from "@material-ui/core";
 import useStyles from "./PostStyles";
-import { useSelector } from "react-redux";
+import {useSelector} from "react-redux";
 
 const PostsComponent = ({ setCurrentId }) => {
   const classes = useStyles();
+
   const allPosts = useSelector((state) => state.posts);
   console.log("This is allPosts", allPosts);
 
@@ -19,7 +20,7 @@ const PostsComponent = ({ setCurrentId }) => {
       spacing={3}
     >
       {allPosts.map((post) => (
-        <Grid item key={post._id} xs={12} sm={6}>
+        <Grid  key={post._id} item xs={12} sm={6}>
           <SinglePost post={post} setCurrentId={setCurrentId} />
         </Grid>
       ))}

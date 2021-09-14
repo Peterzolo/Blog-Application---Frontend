@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { createAPost } from "../../redux/actions/postAction";
 import { updateAPost } from "../../redux/actions/postAction";
 
-
 const FormComponent = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title: "",
@@ -17,14 +16,16 @@ const FormComponent = ({ currentId, setCurrentId }) => {
     tags: "",
   });
 
-  const selectedPost = useSelector((state) => currentId ? state.posts.find((item) =>item._id === currentId): null)
+  const selectedPost = useSelector((state) =>
+    currentId ? state.posts.find((item) => item._id === currentId) : null
+  );
 
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  useEffect( () =>{
-    if(selectedPost) setPostData(selectedPost)
-  },[selectedPost])
+  useEffect(() => {
+    if (selectedPost) setPostData(selectedPost);
+  }, [selectedPost]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,9 +35,19 @@ const FormComponent = ({ currentId, setCurrentId }) => {
     } else {
       dispatch(createAPost(postData));
     }
+    clearBtn()
   };
 
-  const clearBtn = () => {};
+  const clearBtn = () => {
+    setCurrentId(null);
+    setPostData({
+      title: "",
+      message: "",
+      author: "",
+      image: "",
+      tags: "",
+    });
+  };
 
   return (
     <Paper className={classes.paper}>
@@ -46,7 +57,10 @@ const FormComponent = ({ currentId, setCurrentId }) => {
         autoComplete="off"
         onSubmit={handleSubmit}
       >
-        <Typography variant="h5">Post News Update</Typography>
+        <Typography variant="h5">
+          {" "}
+          {currentId ? "Edit " : "Post "}Event
+        </Typography>
 
         <TextField
           name="title"
