@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import bridge001 from "../images/bridge001.jpg";
 
-export default makeStyles(() => ({
+export default makeStyles((theme) => ({
   appBar: {
-    //borderRadius: 15,
+    borderRadius: 15,
     margin: "30px 0",
     display: "flex",
     flexDirection: "row",
@@ -19,4 +18,10 @@ export default makeStyles(() => ({
     borderRadius: "20px",
     padding: "5px",
   },
+  [theme.breakpoints.down("sm")]: {
+    appBarContainer: {
+      flexDirection: "column-reverse",
+    },
+  },
 }));
+

@@ -4,7 +4,7 @@ import { TextField, Typography, Button, Paper } from "@material-ui/core";
 import { useState, useEffect } from "react";
 import FileBase64 from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
-import { createAPost } from "../../redux/actions/postAction";
+import { addPost } from "../../redux/actions/postAction";
 import { updateAPost } from "../../redux/actions/postAction";
 
 const FormComponent = ({ currentId, setCurrentId }) => {
@@ -33,9 +33,9 @@ const FormComponent = ({ currentId, setCurrentId }) => {
     if (currentId) {
       dispatch(updateAPost(currentId, postData));
     } else {
-      dispatch(createAPost(postData));
+      dispatch(addPost(postData));
     }
-    clearBtn()
+    clearBtn();
   };
 
   const clearBtn = () => {
@@ -98,7 +98,9 @@ const FormComponent = ({ currentId, setCurrentId }) => {
           fullWidth
           autoFocus
           value={postData.tags}
-          onChange={(e) => setPostData({ ...postData, tags: e.target.value })}
+          onChange={(e) =>
+            setPostData({ ...postData, tags: e.target.value.split(",") })
+          }
         />
         <div className={classes.fileInput}>
           <FileBase64

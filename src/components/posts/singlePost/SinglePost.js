@@ -21,7 +21,7 @@ const SinglePost = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
 
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} key={post._id}>
       <CardMedia
         className={classes.media}
         image={post.image}
@@ -45,20 +45,25 @@ const SinglePost = ({ post, setCurrentId }) => {
         </Button>
       </div>
 
-      <div className={classes.details} key={post._id}>
-        <Typography variant="body2" color="textSecondary">
+      {/*<div className={classes.details}>
+        <Typography variant="body2" color="textSecondary" component="h2">
           {post.tags.map((tag) => `#${tag} `)}
         </Typography>
-      </div>
+      </div>*/}
 
       <div className={classes.title}>
-        <Typography variant="h5" color="primary">
+        <Typography variant="h6" color="primary">
           {post.title}
         </Typography>
       </div>
 
       <CardContent>
-        <Typography className={classes.title} variant="body2" gutterBottom>
+        <Typography
+          className={classes.title}
+          variant="body2"
+          color="textSecondary"
+          component="p"
+        >
           {post.message}
         </Typography>
       </CardContent>
@@ -70,7 +75,7 @@ const SinglePost = ({ post, setCurrentId }) => {
           onClick={() => dispatch(postLike(post._id))}
         >
           <ThumbUpAltIcon fontSize="small" />
-          Like
+          &nbsp;Like &nbsp;
           {post.likeCount}
         </Button>
 
